@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy');
+@font-face {
+  font-family: '80s Font';
+  src: url("./Fonts/SuperFunky-lgmWw.ttf") format("truetype");
+}
+
+html{
+  background-image: url("./assets/background.png");
+  background-size: cover;
+  height: 100%;
+}
+#root, html, body {
+  animation: fade-in 1s ease-out 1;
+  animation-fill-mode: both;
+  margin: 0;
+  padding: 0;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#title{
+  border-radius: 20px;
+  background-color:rgb(191, 0, 255);
+  width: fit-content;
+  color: #00FFFF;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: "80s Font", cursive, sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  font-style: normal;
+  margin-bottom: 1rem;
+  margin-top: 10px;
+  transition: transform ease-in 1s;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
+}
+
+label{
+  font-size: 1rem;
+}
+
+input{
+  border-radius: 10px;
+  font-size: 0.75rem;
+  padding: 7px;
+  background-color: pink;
+  border: 0px solid white;
+}
+
+button{
+background-color: rgb(191, 0, 255);
+margin-left: 5px;
+border-radius: 10px;
+color: aqua;
+font-weight: 900;
+font-size: 0.75rem;
+font-family: "80s Font", cursive, sans-serif;
+}
+
+button:hover{
+  background-color: rgb(150, 0, 200);
+  cursor:pointer;
+}
+
+#help-text{
+  font-size: 0.75rem;
+  font-family: "Luckiest Guy", cursive, sans-serif;
+  line-height: 1.5;
+}
+
+@media  screen and (max-width: 768px) {
+  #root, html, body{
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 768px){
+  #root, html, body{
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #root, html, body{
+    font-size: 40px;
+  }
+}
+
+@media screen and (min-width: 1920px){
+  #root, html, body{
+    font-size: 50px;
+  }
+}
+
+@keyframes fade-in {
+  0%{
+    opacity: 0%;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
