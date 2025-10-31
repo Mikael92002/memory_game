@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy');
+
 @font-face {
   font-family: '80s Font';
   src: url("./Fonts/SuperFunky-lgmWw.ttf") format("truetype");
 }
 
-html{
+html {
   background-image: url("./assets/background.png");
   background-size: cover;
   height: 100%;
 }
-#root, html, body {
+
+#root,
+html,
+body {
   animation: fade-in 1s ease-out 1;
   animation-fill-mode: both;
   margin: 0;
@@ -20,7 +24,7 @@ html{
   width: 100%;
 }
 
-header{
+header {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -29,9 +33,9 @@ header{
   z-index: 5;
 }
 
-#title{
+#title {
   border-radius: 20px;
-  background-color:rgb(191, 0, 255);
+  background-color: rgb(191, 0, 255);
   width: fit-content;
   color: #00FFFF;
   padding: 5px;
@@ -40,11 +44,19 @@ header{
   font-weight: 400;
   font-size: 1.25rem;
   font-style: normal;
-  margin-bottom: 1rem;
   margin-top: 10px;
 }
 
-#score, .invisible-score{
+#game-description {
+  font-family: "80s Font", cursive, sans-serif;
+  font-size: 0.5rem;
+  text-align: center;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+#score,
+.invisible-score {
   color: #00FFFF;
   font-family: "80s Font", cursive, sans-serif;
   display: sticky;
@@ -53,11 +65,11 @@ header{
 }
 
 
-#score-container{
+#score-container {
   position: sticky;
-  display:flex;
+  display: flex;
   border-radius: 20px;
-  background-color:rgb(191, 0, 255);
+  background-color: rgb(191, 0, 255);
   height: min-content;
   top: 20px;
   justify-content: space-between;
@@ -66,25 +78,26 @@ header{
   margin-bottom: 1rem;
 }
 
-.fake{
-opacity: 0;
-margin-left: 1rem;
+.fake {
+  opacity: 0;
+  margin-left: 1rem;
 }
 
-#restart-button{
+#restart-button {
   border-radius: 20px;
   margin-right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-svg{
-  color:red;
-  fill:aqua;
+
+svg {
+  color: red;
+  fill: aqua;
   width: 80px;
 }
 
-main{
+main {
   display: flex;
   /* justify-content: center; */
   flex-direction: column;
@@ -93,17 +106,17 @@ main{
   text-align: center;
 }
 
-label{
+label {
   font-size: 1rem;
 }
 
-#slider-label{
+#slider-label {
   font-family: "80s Font", cursive, sans-serif;
   font-size: 0.75rem;
   color: rgb(191, 0, 255);
 }
 
-input{
+input {
   border-radius: 10px;
   font-size: 0.75rem;
   padding: 7px;
@@ -111,22 +124,24 @@ input{
   border: 0px solid white;
 }
 
-button{
-background-color: rgb(191, 0, 255);
-margin-left: 5px;
-border-radius: 10px;
-color: aqua;
-font-weight: 900;
-font-size: 0.75rem;
-font-family: "80s Font", cursive, sans-serif;
+
+
+button {
+  background-color: rgb(191, 0, 255);
+  margin-left: 5px;
+  border-radius: 10px;
+  color: aqua;
+  font-weight: 900;
+  font-size: 0.75rem;
+  font-family: "80s Font", cursive, sans-serif;
 }
 
-button:hover{
+button:hover {
   background-color: rgb(150, 0, 200);
-  cursor:pointer;
+  cursor: pointer;
 }
 
-#help-text{
+#help-text {
   font-size: 0.75rem;
   font-family: "Luckiest Guy", cursive, sans-serif;
   line-height: 1.5;
@@ -134,23 +149,24 @@ button:hover{
   animation: bounce 1s ease-in-out infinite;
 }
 
-#card-grid{
+#card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 10px;
   justify-content: center;
   align-items: center;
+  margin: 0 1rem;
 }
 
-.card-item{
+.card-item {
   max-width: 100%;
 }
 
-.card-item>img{
+.card-item>img {
   width: 100%;
 }
 
-#game-win-text{
+#game-win-text {
   font-size: 2rem;
   margin-top: 5rem;
   font-family: "80s Font", cursive, sans-serif;
@@ -159,53 +175,70 @@ button:hover{
   width: 100%;
 }
 
-@media  screen and (max-width: 768px) {
-  #root, html, body{
+@media screen and (max-width: 768px) {
+
+  #root,
+  html,
+  body {
     font-size: 25px;
   }
-  svg{width: 50px;}
-  #card-grid{
+
+  svg {
+    width: 50px;
+  }
+
+  #card-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 768px){
-  #root, html, body{
+
+@media screen and (min-width: 768px) {
+
+  #root,
+  html,
+  body {
     font-size: 30px;
   }
-  svg{
+
+  svg {
     width: 50px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  #root, html, body{
+
+  #root,
+  html,
+  body {
     font-size: 40px;
   }
 }
 
-@media screen and (min-width: 1920px){
-  #root, html, body{
+@media screen and (min-width: 1920px) {
+
+  #root,
+  html,
+  body {
     font-size: 50px;
   }
-  #card-grid{
-    margin: 0 2rem;
-  }
-  svg{
+
+  svg {
     width: 80px;
   }
 }
 
 @keyframes fade-in {
-  0%{
+  0% {
     opacity: 0%;
   }
-  100%{
+
+  100% {
     opacity: 100%;
   }
 }
 
-@keyframes bounce{
-50%{
-  transform: translateY(10px);
-}
+@keyframes bounce {
+  50% {
+    transform: translateY(10px);
+  }
 }
