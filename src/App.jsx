@@ -67,7 +67,11 @@ function App() {
   }
 
   async function setGifs() {
-    const gifsJSON = await getGifs(term, sliderValue);
+    let actualTerm = term;
+    if(term.trim() === ""){
+      actualTerm = "cats";
+    }
+    const gifsJSON = await getGifs(actualTerm, sliderValue);
     if (gifsJSON !== 404) {
       let gifsArray = gifsJSON.data;
       let newArr = [];
@@ -94,6 +98,7 @@ function App() {
     setScore(0);
     setClickedCardSet(new Set());
     setGameBegin(false);
+    setTerm("");
   }
 
   return (
