@@ -52,18 +52,36 @@ header{
   text-align: center;
 }
 
-#score{
-  margin-right: 20px;
+
+#score-container{
+  position: sticky;
+  display:flex;
   border-radius: 20px;
   background-color:rgb(191, 0, 255);
-  padding: 5px;
-  position: sticky;
+  height: min-content;
   top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.5rem;
   margin-bottom: 1rem;
 }
 
-.invisible-score{
-  opacity: 0;
+.fake{
+opacity: 0;
+margin-left: 1rem;
+}
+
+#restart-button{
+  border-radius: 20px;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+svg{
+  color:red;
+  fill:aqua;
+  width: 80px;
 }
 
 main{
@@ -117,16 +135,14 @@ button:hover{
 }
 
 #card-grid{
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-item{
-flex-basis: 400px;
-  flex-grow: 1;
   max-width: 100%;
 }
 
@@ -140,16 +156,24 @@ flex-basis: 400px;
   font-family: "80s Font", cursive, sans-serif;
   color: rgb(191, 0, 255);
   animation: bounce 1s ease-in-out infinite;
+  width: 100%;
 }
 
 @media  screen and (max-width: 768px) {
   #root, html, body{
     font-size: 25px;
   }
+  svg{width: 50px;}
+  #card-grid{
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media screen and (min-width: 768px){
   #root, html, body{
     font-size: 30px;
+  }
+  svg{
+    width: 50px;
   }
 }
 
@@ -162,6 +186,12 @@ flex-basis: 400px;
 @media screen and (min-width: 1920px){
   #root, html, body{
     font-size: 50px;
+  }
+  #card-grid{
+    margin: 0 2rem;
+  }
+  svg{
+    width: 80px;
   }
 }
 
