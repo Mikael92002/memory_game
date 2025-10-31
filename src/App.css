@@ -112,8 +112,7 @@ button:hover{
 
 #card-grid{
   display: grid;
-  grid-template-columns: repeat(3,0.5fr);
-  grid-auto-rows: 0.3fr;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   column-gap: 25px;
   resize: both;
   overflow: auto;
