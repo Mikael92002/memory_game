@@ -17,7 +17,6 @@ html{
   color: black;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 
@@ -27,6 +26,7 @@ header{
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 5;
 }
 
 #title{
@@ -42,14 +42,35 @@ header{
   font-style: normal;
   margin-bottom: 1rem;
   margin-top: 10px;
-  transition: transform ease-in 1s;
+}
+
+#score, .invisible-score{
+  color: #00FFFF;
+  font-family: "80s Font", cursive, sans-serif;
+  display: sticky;
+  top: 20px;
+  text-align: center;
+}
+
+#score{
+  margin-right: 20px;
+  border-radius: 20px;
+  background-color:rgb(191, 0, 255);
+  padding: 5px;
+  position: sticky;
+  top: 20px;
+  margin-bottom: 1rem;
+}
+
+.invisible-score{
+  opacity: 0;
 }
 
 main{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   font-size: 1rem;
   text-align: center;
 }
@@ -85,6 +106,25 @@ button:hover{
   font-size: 0.75rem;
   font-family: "Luckiest Guy", cursive, sans-serif;
   line-height: 1.5;
+  color: rgb(191, 0, 255);
+  animation: bounce 1s ease-in-out infinite;
+}
+
+#card-grid{
+  display: grid;
+  grid-template-columns: repeat(3,0.5fr);
+  grid-auto-rows: 0.3fr;
+  column-gap: 25px;
+  resize: both;
+  overflow: auto;
+}
+
+.card-item{
+width: 100%;
+}
+
+.card-item>img{
+  width: 100%;
 }
 
 @media  screen and (max-width: 768px) {
@@ -117,4 +157,10 @@ button:hover{
   100%{
     opacity: 100%;
   }
+}
+
+@keyframes bounce{
+50%{
+  transform: translateY(10px);
+}
 }
