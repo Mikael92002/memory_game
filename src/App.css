@@ -111,15 +111,16 @@ button:hover{
 }
 
 #card-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  column-gap: 25px;
-  resize: both;
-  overflow: auto;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 25px;
 }
 
 .card-item{
-width: 100%;
+flex-basis: 400px;
+  flex-grow: 1; 
+  max-width: 100%;
 }
 
 .card-item>img{
