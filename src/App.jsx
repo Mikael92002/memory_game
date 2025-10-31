@@ -8,6 +8,7 @@ function App() {
   const [imageURLArray, setImageURLArray] = useState([]);
   const [gameBegin, setGameBegin] = useState(false);
   const [score, setScore] = useState(0);
+  const [gameWin, setGameWin] = useState(false);
 
   // useEffect watches for state changes and shuffles cards based on state:
   const [clickedCard, setClickedCard] = useState(null);
@@ -36,20 +37,28 @@ function App() {
   }
 
   function handleCardClick(imageURL){
+    let oldScore = score;
     if(clickedCardSet.has(imageURL)){
       setScore(0);
+      setClickedCardSet(new Set());
     }
     else{
       setScore((prevScore)=>{
         return prevScore + 1;
       })
+      oldScore = oldScore+1;
 
       setClickedCardSet((prevSet)=>{
         return new Set([...prevSet, imageURL]);
       })
     }
-    setClickedCard(imageURL);
-
+    setClickedCard(crypto.randomUUID());
+    if(oldScore >= imageURLArray.length){
+      setGameWin(true);
+      setGameBegin(false);
+      setImageURLArray([]);
+      setTerm("");
+    }
   }
 
   async function handleKey(key) {
@@ -68,6 +77,8 @@ function App() {
         newArr.push(item.images.original.url);
       }
       setImageURLArray(newArr);
+      setGameWin(false);
+      setScore(0);
     }
   }
 
@@ -109,6 +120,8 @@ function App() {
               ></Card>
             );
           })}
+
+          {gameWin && <div id="game-win-text">Great job! You won!</div>}
         </div>
       </main>
     </>

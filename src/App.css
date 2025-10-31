@@ -128,6 +128,14 @@ flex-basis: 400px;
   width: 100%;
 }
 
+#game-win-text{
+  font-size: 2rem;
+  margin-top: 5rem;
+  font-family: "80s Font", cursive, sans-serif;
+  color: rgb(191, 0, 255);
+  animation: bounce 1s ease-in-out infinite;
+}
+
 @media  screen and (max-width: 768px) {
   #root, html, body{
     font-size: 25px;
