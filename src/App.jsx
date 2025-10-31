@@ -12,15 +12,19 @@ function App() {
 
   // useEffect watches for state changes and shuffles cards based on state:
   const [clickedCard, setClickedCard] = useState(null);
-
   const [clickedCardSet, setClickedCardSet] = useState(new Set());
+  const [sliderValue, setSliderValue] = useState(3);
+
+  // const value = document.querySelector("#value");
+  // const input = document.querySelector("#slider");
+  // value.textContent = input.value;
 
   useEffect(() => {
     function shuffleCards() {
       setImageURLArray((prev) => {
         let newArr = [...prev];
         for (let i = 0; i < prev.length; i++) {
-          let randIndex = getRandInteger(0, prev.length-1);
+          let randIndex = getRandInteger(0, prev.length - 1);
           let oldValue = newArr[i];
           newArr[i] = newArr[randIndex];
           newArr[randIndex] = oldValue;
@@ -36,24 +40,23 @@ function App() {
     setTerm(value);
   }
 
-  function handleCardClick(imageURL){
+  function handleCardClick(imageURL) {
     let oldScore = score;
-    if(clickedCardSet.has(imageURL)){
+    if (clickedCardSet.has(imageURL)) {
       setScore(0);
       setClickedCardSet(new Set());
-    }
-    else{
-      setScore((prevScore)=>{
+    } else {
+      setScore((prevScore) => {
         return prevScore + 1;
-      })
-      oldScore = oldScore+1;
+      });
+      oldScore = oldScore + 1;
 
-      setClickedCardSet((prevSet)=>{
+      setClickedCardSet((prevSet) => {
         return new Set([...prevSet, imageURL]);
-      })
+      });
     }
     setClickedCard(crypto.randomUUID());
-    if(oldScore >= imageURLArray.length){
+    if (oldScore >= imageURLArray.length) {
       setGameWin(true);
       setGameBegin(false);
       setImageURLArray([]);
@@ -68,7 +71,7 @@ function App() {
   }
 
   async function setGifs() {
-    const gifsJSON = await getGifs(term, 9);
+    const gifsJSON = await getGifs(term, sliderValue);
     if (gifsJSON !== 404) {
       let gifsArray = gifsJSON.data;
       let newArr = [];
@@ -86,6 +89,10 @@ function App() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  function handleSliderValue(sliderValue){
+    setSliderValue(sliderValue);
+  }
+
   return (
     <>
       <header>
@@ -94,16 +101,23 @@ function App() {
       {gameBegin && <div id="score">Score:{score}</div>}
       <main>
         {!gameBegin && (
-          <label htmlFor="search">
-            <input
-              type="text"
-              value={term}
-              onChange={(e) => handleInputChange(e.target.value)}
-              onKeyDown={(e) => handleKey(e.key)}
-              id="search"
-            />
-            <button onClick={setGifs}>Search</button>
-          </label>
+          <>
+            <label htmlFor="search">
+              <input
+                type="text"
+                value={term}
+                onChange={(e) => handleInputChange(e.target.value)}
+                onKeyDown={(e) => handleKey(e.key)}
+                id="search"
+              />
+              <button onClick={setGifs}>Search</button>
+            </label>
+            <label htmlFor="slider" id="slider-label">
+              Number of pics:
+              <input type="range" name="slider" value = {sliderValue} id="slider" min="3" max="21" step = "3" onInput={(e)=> handleSliderValue(e.target.value)}/>
+              <output id = "value">{sliderValue}</output>
+            </label>
+          </>
         )}
 
         {!gameBegin && (
